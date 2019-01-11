@@ -1,5 +1,5 @@
 ###more advanced attempt at useing scrapy to scrape and parse webdata and then 
-###save it too a .csv
+###save it to a .csv
 
 import scrapy
 import csv
@@ -26,7 +26,7 @@ class BrickSetSpider(scrapy.Spider):
             minifigs = brickset.xpath(MINIFIGS_SELECTOR).extract_first(),
             #price = brickset.xpath(PRICE_SELECTOR).extract_first(),
             image = brickset.css(IMAGE_SELECTOR).extract_first()
-            	
+                
             print(name)
             print(pieces)
             print(minifigs)
@@ -37,7 +37,7 @@ class BrickSetSpider(scrapy.Spider):
         NEXT_PAGE_SELECTOR = '.next a ::attr(href)'
         next_page = response.css(NEXT_PAGE_SELECTOR).extract_first()
         if next_page:
-        	yield scrapy.Request(
-        		response.urljoin(next_page),
-        		callback=self.parse
-        	)
+            yield scrapy.Request(
+                response.urljoin(next_page),
+                callback=self.parse
+            )
