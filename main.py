@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # execute to run brickset_spider.py
 
 import subprocess
